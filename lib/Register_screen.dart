@@ -74,10 +74,7 @@ class Registerscreen extends StatelessWidget
                     height: 40.0,
                   ),
                   TextFormField(
-                    onChanged: (String value)
-                    {
-                      print(value);
-                    },
+
                     decoration: InputDecoration(
                       labelText: 'Name',
                       prefixIcon: Icon(
@@ -92,10 +89,7 @@ class Registerscreen extends StatelessWidget
                   TextFormField(
                     keyboardType:TextInputType.phone,
 
-                    onChanged: (String value)
-                    {
-                      print(value);
-                    },
+                    
                     decoration: InputDecoration(
                       labelText: 'Contant Number',
                       prefixIcon: Icon(
