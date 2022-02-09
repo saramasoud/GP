@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Register_screen.dart';
+import 'modules/registerscreen/Register_screen.dart';
 
 void main() {
   runApp(MyApp());
