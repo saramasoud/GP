@@ -8,6 +8,8 @@ import 'package:register/shared/components/component.dart';
 
 class Registerscreen extends StatelessWidget
 {
+  get navigateAndFinish => null;
+
 
   hexcolor(String colorhexcode)
   {
@@ -28,7 +30,13 @@ class Registerscreen extends StatelessWidget
     return BlocProvider(
       create: (BuildContext context) => RegisterCubit(),
       child: BlocConsumer<RegisterCubit, DoctorRegisterStates>(
-        listener: (context, state){},
+        listener: (context, state)
+        {
+          if(state is DoctorCreateUserSuccessState)
+            {
+              navigateAndFinish;
+            }
+        },
         builder: (context, state)
         {
           return Scaffold(
