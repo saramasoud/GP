@@ -44,6 +44,9 @@ Widget defaultFormField ({
   required IconData prefix,
   IconData ? suffix,
   bool isPasswordShow = false,
+  onSubmit,
+  bool? isPassword,
+  Function()? suffixPressed,
 }) =>
     TextFormField(
       controller: controller,

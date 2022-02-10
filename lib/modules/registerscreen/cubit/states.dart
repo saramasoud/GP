@@ -3,10 +3,10 @@ abstract class  DoctorRegisterStates {}
 class DoctorRegisterInitialState extends DoctorRegisterStates {}
 class DoctorRegisterLoadingState extends DoctorRegisterStates {}
 class DoctorRegisterSuccessState extends DoctorRegisterStates {}
-class RegisterErrorState extends DoctorRegisterStates {
+class DoctorRegisterErrorState extends DoctorRegisterStates {
   final String error;
-  RegisterErrorState(this.error);
+  DoctorRegisterErrorState(this.error);
 }
-class DoctorRegisterChangePasswordVisibilityState extends DoctorRegisterStates {}
+class DoctorChangePasswordVisibilityState extends DoctorRegisterStates {}
 
 

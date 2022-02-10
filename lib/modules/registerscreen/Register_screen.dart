@@ -1,3 +1,4 @@
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,8 @@ class Registerscreen extends StatelessWidget
   }
   var emailcontroller=TextEditingController();
   var passwordcontroller=TextEditingController();
+  var namecontroller=TextEditingController();
+  var phonecontroller=TextEditingController();
   var formKey = GlobalKey<FormState>();
 
   @override
@@ -124,10 +127,18 @@ class Registerscreen extends StatelessWidget
                         defaultFormField(
                             label: 'password',
                             type: TextInputType.visiblePassword,
+                            controller: passwordcontroller,
                             prefix:
                             Icons.password,
-                            suffix:
-                            Icons.remove_red_eye,
+                            suffix: RegisterCubit.get(context).suffix,
+                            onSubmit:(value)
+                            {
+
+                            },
+                            isPassword:RegisterCubit.get(context).isPassword,
+                            suffixPressed: (){
+                              RegisterCubit.get(context).ChangePasswordVisibility();
+                            },
 
                             validate: (String value)
                             {
@@ -138,20 +149,34 @@ class Registerscreen extends StatelessWidget
 
                             },
 
-                            controller: passwordcontroller
+
                         ),
                         SizedBox(
                           height:25.0,
                         ),
-                        defaultButton(
-                          text: 'sign up',
-                          function: ()
-                          {
-                            print(emailcontroller.text);
-                            print(passwordcontroller.text);
-                          },
-                          background: Color(hexcolor('#00ABE1')),
-                          width: double.infinity,
+                        ConditionalBuilder(
+                          condition: state is! DoctorRegisterLoadingState,
+                          builder: (context) => defaultButton(
+
+                            function: () {
+
+                              if(formKey.currentState!.validate())
+                                {
+                                  RegisterCubit.get(context).userRegister(
+                                    name: namecontroller.text,
+                                    email: emailcontroller.text,
+                                    password: passwordcontroller.text,
+                                    phone: phonecontroller.text,
+                                  );
+                                }
+
+                            },
+                            background: Color(hexcolor('#00ABE1')),
+                            width: double.infinity,
+                            text: 'sign up',
+                            isUpperCase: true,
+                          ), fallback: (context) => Center(child: CircularProgressIndicator()),
+
 
                         ),
 
