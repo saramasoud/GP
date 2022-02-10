@@ -42,7 +42,7 @@ Widget defaultFormField ({
   Function ? validate,
   required String label,
   required IconData prefix,
-  IconData? suffix,
+  IconData ? suffix,
   bool isPasswordShow = false,
 }) =>
     TextFormField(
@@ -59,7 +59,7 @@ Widget defaultFormField ({
         ) : null,
 
       ),
-      validator: validate!=null ? validate(
+      validator: validate != null ? validate(
         validate
       ): null,
 
